@@ -33,7 +33,6 @@ export default function App() {
           setAppInitialized(true);
         }, 3000);
         // <-- comment the above and de-comment the below to make the SplashScreen to show during the time it takes to initialize app -->
-
         // setAppInitialized(true);
       } catch (error) {
         console.log(error);
@@ -46,15 +45,15 @@ export default function App() {
   return !appInitialized ? (
     <SplashScreen />
   ) : (
-    <SafeAreaView style={{ flex: 1, backgroundColor: "#fd93dd" }}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: "rgb(14, 35, 55)" }}>
       <DataContext.Provider value={knots}>
         <NavigationContainer style={styles.container}>
           <Stack.Navigator
             screenOptions={{
               headerStyle: {
-                backgroundColor: "#f4511e",
+                backgroundColor: "rgb(14, 35, 55)",
               },
-              headerTintColor: "#fff",
+              headerTintColor: "rgb(255, 255, 255)",
             }}
           >
             <Stack.Screen name="Start" component={HomeScreen} />
@@ -76,7 +75,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#faac",
+    backgroundColor: "rgb(14, 35, 55)",
     alignItems: "center",
     justifyContent: "center",
   },
