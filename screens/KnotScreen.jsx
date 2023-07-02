@@ -34,25 +34,23 @@ function KnotScreen({ navigation, route }) {
   }
 
   return (
-    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-      <Text style={{fontSize: 20, fontWeight: 500}} >{name}</Text>
+    <View style={styles.knotContainer}>
+      <Text style={styles.knotTitle}>{name}</Text>
       {!imageLoaded && <ShimmerPlaceHolder style={styles.image} />}
       <Image
         source={{ uri: knotData.img }}
         style={imageStyle}
         onLoad={handleImageLoad}
       />
-      <Text>{knotData.use}</Text>
-      <View
-        style={{
-          marginTop: "50%",
-          width: "90%",
-          flexDirection: "row",
-          justifyContent: "space-between",
-        }}
-      >
-        <Button title="Tillbaka" onPress={() => navigation.goBack()} />
+      <Text style={styles.knotText}>{knotData.use}</Text>
+      <View style={styles.footerNav}>
         <Button
+          color="rgb(189, 240, 255)"
+          title="Tillbaka"
+          onPress={() => navigation.goBack()}
+        />
+        <Button
+          color="rgb(189, 240, 255)"
           title="Gå till Start"
           onPress={() => navigation.navigate("Start")}
         />
@@ -67,11 +65,11 @@ KnotScreen.propTypes = {
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#faac",
-    alignItems: "center",
-    justifyContent: "center",
+  footerNav: {
+    marginTop: "10%",
+    width: "90%",
+    flexDirection: "row",
+    justifyContent: "space-between",
   },
   image: {
     width: "100%",
@@ -80,6 +78,23 @@ const styles = StyleSheet.create({
   loadingimage: {
     width: "100%",
     height: 1,
+  },
+  knotContainer: {
+    backgroundColor: "rgb(14, 35, 55)",
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  knotText: {
+    color: "rgb(255, 255, 255)",
+    height: 200,
+    padding: 16,
+  },
+  knotTitle: {
+    color: "rgb(255, 255, 255)",
+    fontSize: 20,
+    fontWeight: 500,
+    paddingBottom: 10,
   },
 });
 

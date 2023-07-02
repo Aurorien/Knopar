@@ -11,7 +11,7 @@ function SplashScreen() {
           style={styles.image}
           resizeMode="contain"
         />
-        <Pulse size={48} color="#FFF" />
+        <Pulse size={48} color="rgb(255, 255, 253)" />
       </View>
     </SafeAreaView>
   );
@@ -19,7 +19,7 @@ function SplashScreen() {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "red",
+    backgroundColor: "rgb(142, 236, 255)",
     flex: 1,
     justifyContent: "center",
     alignItems: "center",

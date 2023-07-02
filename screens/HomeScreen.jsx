@@ -17,15 +17,7 @@ function HomeScreen({ navigation }) {
   return (
     <View style={styles.viewContainer}>
       <ImageBackground source={bgImage} style={styles.backgroundImage}>
-        <Animatable.Text
-          animation="fadeInUp"
-          style={{
-            color: "rgb(255, 255, 255)",
-            fontSize: 50,
-            fontWeight: 700,
-            marginTop: "60%",
-          }}
-        >
+        <Animatable.Text animation="fadeInUp" style={styles.animationText}>
           Knopar
         </Animatable.Text>
         <View style={styles.welcomeContainer}>
@@ -44,6 +36,7 @@ function HomeScreen({ navigation }) {
         </View>
       </ImageBackground>
       <Button
+        color="rgb(189, 240, 255)"
         title="Gå till Alla knopar"
         onPress={() => navigation.navigate("Alla knopar")}
       />
@@ -55,11 +48,11 @@ HomeScreen.propTypes = {
 };
 
 const styles = StyleSheet.create({
-  viewContainer: {
-    alignItems: "center",
-    backgroundColor: 'rgb(14, 35, 55)',
-    flex: 1,
-    justifyContent: "center",
+  animationText: {
+    color: "rgb(255, 255, 255)",
+    fontSize: 50,
+    fontWeight: 700,
+    marginTop: "60%",
   },
   backgroundImage: {
     alignItems: "center",
@@ -80,6 +73,12 @@ const styles = StyleSheet.create({
     backgroundColor: "rgba(50, 49, 49, 0.7)",
     borderRadius: 3,
     marginTop: "40%",
+  },
+  viewContainer: {
+    alignItems: "center",
+    backgroundColor: "rgb(14, 35, 55)",
+    flex: 1,
+    justifyContent: "center",
   },
 });
 
