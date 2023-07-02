@@ -4,7 +4,7 @@ import { LinearGradient } from "expo-linear-gradient";
 import PropTypes from "prop-types";
 import {
   Button,
-  Dimensions,
+  useWindowDimensions,
   Image,
   StyleSheet,
   Text,
@@ -14,10 +14,14 @@ import {
 const ShimmerPlaceHolder = createShimmerPlaceholder(LinearGradient);
 
 function KnotScreen({ navigation, route }) {
-  const { name, knotData } = route.params;
+  const { name, knotData } = route.params,
+    [imageLoaded, setImageLoaded] = useState(false),
+    [imageStyle, setImageStyle] = useState(styles.loadingimage),
+    windowWidth = useWindowDimensions().width;
 
-  const [imageLoaded, setImageLoaded] = useState(false);
-  const [imageStyle, setImageStyle] = useState(styles.loadingimage);
+  useEffect(() => {
+    setImageStyle({ ...imageStyle, width: windowWidth });
+  }, [windowWidth]);
 
   useEffect(() => {
     if (imageStyle === styles.image) {
@@ -61,11 +65,11 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   image: {
-    width: Dimensions.get("window").width,
+    width: "100%",
     height: 350,
   },
   loadingimage: {
-    width: Dimensions.get("window").width,
+    width: "100%",
     height: 1,
   },
 });
