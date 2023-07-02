@@ -1,13 +1,47 @@
-import * as Animatable from 'react-native-animatable'
+import * as Animatable from "react-native-animatable";
 import PropTypes from "prop-types";
-import { Button, ImageBackground, View } from "react-native";
+import { useState } from "react";
+import {
+  Button,
+  ImageBackground,
+  StyleSheet,
+  Text,
+  TextInput,
+  View,
+} from "react-native";
 
 function HomeScreen({ navigation }) {
-  const bgImage = require('../assets/bgImg.jpg')
+  const bgImage = require("../assets/bgImg.jpg"),
+    [name, setName] = useState("");
+
   return (
-    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-      <ImageBackground source={bgImage} style={{height: '95%', width: '100%', alignItems: "center", justifyContent: "center"}}>
-      <Animatable.Text animation="fadeInUp">Knopar</Animatable.Text>
+    <View style={styles.viewContainer}>
+      <ImageBackground source={bgImage} style={styles.backgroundImage}>
+        <Animatable.Text
+          animation="fadeInUp"
+          style={{
+            color: "rgb(255, 255, 255)",
+            fontSize: 50,
+            fontWeight: 700,
+            marginTop: "60%",
+          }}
+        >
+          Knopar
+        </Animatable.Text>
+        <View style={styles.welcomeContainer}>
+          <Text style={{ color: "rgb(255, 255, 255)", textAlign: "center" }}>
+            Vad heter du?
+          </Text>
+          <TextInput
+            onChangeText={(text) => setName(text)}
+            onSubmitEditing={() => {
+              alert(`Välkommen ${name}`);
+              setName("");
+            }}
+            style={styles.input}
+            value={name}
+          />
+        </View>
       </ImageBackground>
       <Button
         title="Gå till Alla knopar"
@@ -19,5 +53,34 @@ function HomeScreen({ navigation }) {
 HomeScreen.propTypes = {
   navigation: PropTypes.object,
 };
+
+const styles = StyleSheet.create({
+  viewContainer: {
+    alignItems: "center",
+    backgroundColor: 'rgb(14, 35, 55)',
+    flex: 1,
+    justifyContent: "center",
+  },
+  backgroundImage: {
+    alignItems: "center",
+    height: "95%",
+    justifyContent: "center",
+    width: "100%",
+  },
+  input: {
+    backgroundColor: "rgba(255, 255, 255, 0.7)",
+    borderRadius: 7,
+    borderWidth: 1,
+    height: 40,
+    margin: 12,
+    padding: 10,
+    width: 150,
+  },
+  welcomeContainer: {
+    backgroundColor: "rgba(50, 49, 49, 0.7)",
+    borderRadius: 3,
+    marginTop: "40%",
+  },
+});
 
 export default HomeScreen;

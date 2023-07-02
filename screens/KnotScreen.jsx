@@ -35,7 +35,7 @@ function KnotScreen({ navigation, route }) {
 
   return (
     <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-      <Text>{name}</Text>
+      <Text style={{fontSize: 20, fontWeight: 500}} >{name}</Text>
       {!imageLoaded && <ShimmerPlaceHolder style={styles.image} />}
       <Image
         source={{ uri: knotData.img }}
@@ -43,11 +43,20 @@ function KnotScreen({ navigation, route }) {
         onLoad={handleImageLoad}
       />
       <Text>{knotData.use}</Text>
-      <Button title="Tillbaka" onPress={() => navigation.goBack()} />
-      <Button
-        title="Gå till Start"
-        onPress={() => navigation.navigate("Start")}
-      />
+      <View
+        style={{
+          marginTop: "50%",
+          width: "90%",
+          flexDirection: "row",
+          justifyContent: "space-between",
+        }}
+      >
+        <Button title="Tillbaka" onPress={() => navigation.goBack()} />
+        <Button
+          title="Gå till Start"
+          onPress={() => navigation.navigate("Start")}
+        />
+      </View>
     </View>
   );
 }
