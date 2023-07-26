@@ -10,7 +10,7 @@ import {
   TextInput,
   View,
 } from "react-native";
-import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view"; // Import KeyboardAwareScrollView
+import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 
 function HomeScreen({ navigation }) {
   const bgImage = require("../assets/bgImg.jpg"),
@@ -105,6 +105,9 @@ const styles = StyleSheet.create({
 });
 
 export default HomeScreen;
+
+// Probably want to change the keyboard avoidance to use position like in this:
+// https://stackoverflow.com/questions/54547794/how-to-set-the-textinput-box-above-the-keyboard-while-entering-the-input-field-i
 
 //////////////////////////////////////77
 
